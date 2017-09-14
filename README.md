@@ -26,3 +26,8 @@ babel-polyfill      //这个包跟上边的不一样，安装好了之后不需�
 }
 这是webpack的loader的配置，接着在app的路口文件里（感觉最好），require('./js/jquery.min.js')进来文件，这样在index.html页面以script标签形式引入的文件就ok了。
 /************************************************************************************************************/
+baidu音乐的api
+1，获取歌曲列表，json格式
+http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=1&size=10&offset=0
+2，播放音乐
+http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.song.play&songid=877578
