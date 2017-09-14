@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>music jinux</title>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>-->
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.jplayer.min.js"></script>
+    <script>
+      (function (doc, win, undefined) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in win? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (clientWidth === undefined) return;
+              docEl.style.fontSize = clientWidth + 'px';
+            };
+            if (doc.addEventListener === undefined) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false)
+      })(document, window);
+    </script>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
