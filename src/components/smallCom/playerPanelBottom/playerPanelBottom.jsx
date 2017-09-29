@@ -12,8 +12,13 @@ export default class PlayerPanelBottom extends Component {
 		this.playBtn = this.playBtn.bind(this); 
 	}
 
-	playBtn(){
-		this.state.playMark === 'play' ? this.setState({playMark: 'pause'}) : this.setState({playMark: 'play'}) 
+	playBtn(ev){
+		//this.state.playMark === 'play' ? this.setState({playMark: 'pause'}) : this.setState({playMark: 'play'});
+		if(ev.target.className === 'fa fa-play') {
+			ev.target.className = 'fa fa-pause';
+		}else {
+			ev.target.className = 'fa fa-play';
+		}
 	}
 
 	render(){
@@ -30,7 +35,7 @@ export default class PlayerPanelBottom extends Component {
 							<span>南拳妈妈</span>
 						</h5>
 						<h6>
-							<span onClick={ this.playBtn } >{ this.state.playMark }</span>
+							<span className="fa fa-play" onClick={ this.playBtn } ></span>
 						</h6>
 					</div>
 				</div>

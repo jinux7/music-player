@@ -6,9 +6,21 @@ export default class SongList extends Component {
 		super(props);
 		this.state = {
 			singer: this.props.match.params.singer,
-			songs:[]
+			songs:[],
+			playMark: 'play'
+		}
+		this.playBtn = this.playBtn.bind(this);
+	}
+
+	playBtn(ev){
+		//this.state.playMark === 'play' ? this.setState({playMark: 'pause'}) : this.setState({playMark: 'play'});
+		if(ev.target.className === 'fa fa-play') {
+			ev.target.className = 'fa fa-pause';
+		}else {
+			ev.target.className = 'fa fa-play';
 		}
 	}
+
 	componentWillMount(){
 		let _this = this;
 		$.get('http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.search.catalogSug&query='+this.state.singer,function(res){
@@ -18,7 +30,9 @@ export default class SongList extends Component {
 			});
 		});
 	}
+
 	render(){
+		let _this = this;
 		return (
 			<div className="songList">
 				<ul>
@@ -28,6 +42,7 @@ export default class SongList extends Component {
 							return (
 								<li key={'songList'+index}>
 									<strong>{item.songname}</strong>
+									<span className="fa fa-play" onClick={ _this.playBtn } ></span>
 								</li>
 							)	
 						})
