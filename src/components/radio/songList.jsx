@@ -23,12 +23,23 @@ export default class SongList extends Component {
 
 	componentWillMount(){
 		let _this = this;
-		$.get('http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.search.catalogSug&query='+this.state.singer,function(res){
+		$.ajax({
+			url: 'http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.search.catalogSug&query='+this.state.singer,
+			dataType: 'jsonp',
+			success:function(res){
+				console.log(res.song);
+				_this.setState({
+					songs: res.song
+				});
+			}
+		});
+		
+		/*$.get('http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.search.catalogSug&query='+this.state.singer,function(res){
 			console.log(res.song);
 			_this.setState({
 				songs: res.song
 			});
-		});
+		});*/
 	}
 
 	render(){

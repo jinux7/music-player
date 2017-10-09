@@ -10,9 +10,13 @@
 			top: 0;
 			left: 0;
 		    width: 0.2rem;
+		    height: 0.2rem;
 		    border-radius: 50%;
 		    margin-top: -0.04rem;
 		    margin-left: 0.02rem;
+	}
+	>img.zhuan {
+		animation: rotatePic 5s linear infinite;
 	}
 	>.wrap {
 		position: absolute;
@@ -45,4 +49,16 @@
 			}
 		}
 	}
+}
+
+@-webkit-keyframes rotatePic {
+    0% {
+        transform:rotate(0deg);
+    }
+    50% {
+        transform:rotate(180deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
 }
