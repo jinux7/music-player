@@ -14,11 +14,26 @@ export default class SongList extends Component {
 
 	playBtn(ev){
 		//this.state.playMark === 'play' ? this.setState({playMark: 'pause'}) : this.setState({playMark: 'play'});
-		if(ev.target.className === 'fa fa-play') {
+		/*if(ev.target.className === 'fa fa-play') {
 			ev.target.className = 'fa fa-pause';
 		}else {
 			ev.target.className = 'fa fa-play';
-		}
+		}*/
+		let span = ev.target;
+		$(span).animate({opacity: '0'}, 100)
+				.animate({opacity: '1'}, 100);
+		let nB = $(span).next('b');		
+		nB.css({opacity: '1',display: 'block'});
+		let bH = nB.offset().top, winH = $(window).height(), playerPanH = $('.playerPanelBottom').height();
+		nB.animate({opacity: '0',left:'0',top: winH-bH-playerPanH}, 1000,function(){
+					$(this).css({
+						opacity: '1',
+						top: 0,
+						left: 'initial',
+						display: 'none'
+					});
+					
+				});
 	}
 
 	componentWillMount(){
@@ -53,7 +68,8 @@ export default class SongList extends Component {
 							return (
 								<li key={'songList'+index}>
 									<strong>{item.songname}</strong>
-									<span className="fa fa-play" onClick={ _this.playBtn } ></span>
+									<span className="fa fa-hand-o-right" onClick={ _this.playBtn } ></span>
+									<b>已添加播放</b>
 								</li>
 							)	
 						})

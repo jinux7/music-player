@@ -1,6 +1,6 @@
 .songList {
 	>ul {
-		overflow: hidden;
+		/* overflow: hidden; */
 		>h2 {
 			font-size: 0.04rem;
 		    color: #333;
@@ -8,6 +8,7 @@
 		    text-shadow: 3px 3px 3px rgba(51,165,221,.2);
 		}
 		>li {
+			position: relative;
 			line-height: 0.1rem;
 			font-size: 0.05rem;
 			border-bottom: 1px solid #666;
@@ -22,6 +23,15 @@
 				margin-right: 0.05rem;
 				line-height: 0.1rem;
 			}
+			>b {
+					position: absolute;
+					top: 0;
+					display: none;
+					right: 0.05rem;
+					font-size: 0.02rem;
+					opacity: 1;
+					z-index: 9;
+				}
 		}
 	}
 }
