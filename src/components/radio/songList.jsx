@@ -1,5 +1,8 @@
 import React,{ Component } from 'react';
 import './songList.less';
+import { store } from '../../store/store.js';
+import { newMusic } from '../../store/action.js';
+import initalbum from '../../images/zhaolei.png';
 
 export default class SongList extends Component {
 	constructor(props){
@@ -7,13 +10,13 @@ export default class SongList extends Component {
 		this.state = {
 			singer: this.props.match.params.singer,
 			songs:[],
+			albums:[],
 			playMark: 'play'
 		}
 		this.playBtn = this.playBtn.bind(this);
 	}
 
-	playBtn(item,ev){
-		console.log(item);
+	playBtn(item,album,ev){
 		let span = ev.target;
 		$(span).animate({opacity: '0'}, 100)
 				.animate({opacity: '1'}, 100);
@@ -29,6 +32,10 @@ export default class SongList extends Component {
 					});
 					
 				});
+		//redux处理
+		item.album = album || initalbum;
+		store.dispatch(newMusic(item));
+		console.log(item);
 	}
 
 	componentWillMount(){
@@ -37,9 +44,9 @@ export default class SongList extends Component {
 			url: 'http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method=baidu.ting.search.catalogSug&query='+this.state.singer,
 			dataType: 'jsonp',
 			success:function(res){
-				console.log(res.song);
 				_this.setState({
-					songs: res.song
+					songs: res.song,
+					albums: res.album
 				});
 			}
 		});
@@ -63,7 +70,7 @@ export default class SongList extends Component {
 							return (
 								<li key={'songList'+index}>
 									<strong>{item.songname}</strong>
-									<span className="fa fa-hand-o-right" onClick={ _this.playBtn.bind(_this,item) } ></span>
+									<span className="fa fa-hand-o-right" onClick={ _this.playBtn.bind(_this,item,_this.state.albums&&_this.state.albums[index]) } ></span>
 									<b>已添加播放</b>
 								</li>
 							)	
