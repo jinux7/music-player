@@ -12,13 +12,8 @@ export default class SongList extends Component {
 		this.playBtn = this.playBtn.bind(this);
 	}
 
-	playBtn(ev){
-		//this.state.playMark === 'play' ? this.setState({playMark: 'pause'}) : this.setState({playMark: 'play'});
-		/*if(ev.target.className === 'fa fa-play') {
-			ev.target.className = 'fa fa-pause';
-		}else {
-			ev.target.className = 'fa fa-play';
-		}*/
+	playBtn(item,ev){
+		console.log(item);
 		let span = ev.target;
 		$(span).animate({opacity: '0'}, 100)
 				.animate({opacity: '1'}, 100);
@@ -68,7 +63,7 @@ export default class SongList extends Component {
 							return (
 								<li key={'songList'+index}>
 									<strong>{item.songname}</strong>
-									<span className="fa fa-hand-o-right" onClick={ _this.playBtn } ></span>
+									<span className="fa fa-hand-o-right" onClick={ _this.playBtn.bind(_this,item) } ></span>
 									<b>已添加播放</b>
 								</li>
 							)	
