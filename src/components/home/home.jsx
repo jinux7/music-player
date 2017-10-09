@@ -51,8 +51,8 @@ export default class App extends Component {
 					<div id="player"></div>
 					<ul>
 						<li><Link to="/">听歌</Link></li>
-						<li><Link to="/page2">看视频</Link></li>
-						<li><Link to="/page3">唱歌</Link></li>
+						<li><Link to="/page2">直播</Link></li>
+						<li><Link to="/page3">K歌</Link></li>
 					</ul>
 					<Route path="/" component={RadioPage} />
 					<Route path="/page2" component={Page2} />
