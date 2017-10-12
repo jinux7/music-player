@@ -1,31 +1,33 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navSinger.less';
+import singerData from '../../mock/singerNav.js';
 export default class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			songs:[
-				{'singer':'陈奕迅'},
-				{'singer':'刘德华'},
-				{'singer':'张学友'},
-				{'singer':'黎明'},
-				{'singer':'郭富城'},
-				{'singer':'罗志祥'},
-				{'singer':'陶喆'},
-				{'singer':'周杰伦'},
-				{'singer':'张国荣'},
-				{'singer':'薛之谦'},
-				{'singer':'朴树'},
-				{'singer':'满江'}
-			],
+			songs:singerData,
 		}
 	}
+
+	componentDidMount(){
+		setTimeout(function(){
+			let winH = $(window).height(), 
+				panelH = $('.playerPanelBottom').height(), 
+				ulH = $('#player').next().height(),
+				logoH = $('.home>h1').height();
+			$('.navSinger').height(winH-panelH-ulH-logoH);
+			console.log(winH,panelH,ulH);
+		},500);
+	}
+
 	render() {
 		let arr = [];
 		for(let i=0;i<this.state.songs.length;i++){
 			arr.push(<li key={'singer'+i}>
-						<Link to={'/songlist/'+this.state.songs[i].singer}>{this.state.songs[i].singer}</Link>
+						<Link to={'/songlist/'+this.state.songs[i].singer}>
+							<img src={this.state.songs[i].url} alt="歌手图片" />
+						</Link>
 					</li>);
 		}
 		return (

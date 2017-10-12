@@ -5,6 +5,7 @@
 	width: 1rem;
 	height: 0.2rem;
 	box-shadow: 2px -2px 15px #eee;
+	background-color: #fff;
 	>img {
 			position: absolute;
 			top: 0;
@@ -14,9 +15,11 @@
 		    border-radius: 50%;
 		    margin-top: -0.04rem;
 		    margin-left: 0.02rem;
+		    animation: rotatePic 30s linear infinite;
+			animation-play-state:paused;
 	}
 	>img.zhuan {
-		animation: rotatePic 5s linear infinite;
+		animation-play-state:running;
 	}
 	>.wrap {
 		position: absolute;
